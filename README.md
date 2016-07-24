@@ -7,6 +7,7 @@ The images are automatically build at the docker hub: https://hub.docker.com/r/l
 ## Tested with
 
 * dovecot 2.2.9 on Ubuntu 14.04 LTS
+* dovecot 2.2.22 on Ubuntu 16.04 LTS
 
 ## First steps
 Before you start please note the two main problems with this docker image:
@@ -26,14 +27,16 @@ on your server running `dovecot`
 Afterwards you can access the solr admin panel at http://127.0.0.1:8983/solr
 
 ### Hooking up dovecot
-Dovecot seems not to supoort newer solr versions by default (check http://dovecot.org/list/dovecot/2015-June/101207.html for more information)
-
-It seems to be a problem with dovecots header setting here: https://github.com/dovecot/core/blob/master/src/plugins/fts-solr/solr-connection.c#L490
-
-I think the `text/xml` string is the problem because `text/html` is not a valid content type; I tried to change it to `application/xml` but unfortunatly this didn't work either. For me the solution was to remove this line simply. Afterwards dovecot was communication correctly with solr.
-
-**Due to this problem you have to compile dovecot by yourself!**
-
 Afterwards you have to configure the solr usage in dovecot like described at http://wiki2.dovecot.org/Plugins/FTS/Solr
 
 Please note that the url schema has changed a bit; you probably should use this url: `http://localhost:8983/solr/dovecot/`
+
+#### Dovecot 2.2.9
+With dovecot version 2.2.9 there is a problem with dovecot's header setting here: https://github.com/dovecot/core/blob/master/src/plugins/fts-solr/solr-connection.c#L490
+
+I solved the problem by removing the line completly.
+
+More information: http://dovecot.org/list/dovecot/2015-June/101207.html
+
+#### Dovecot 2.2.22
+Working out of the box.
