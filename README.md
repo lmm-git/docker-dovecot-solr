@@ -12,7 +12,7 @@ The images are automatically build at the docker hub: https://hub.docker.com/r/l
 ## First steps
 Before you start please note the two main problems with this docker image:
 
-1. This image contains a solr instance which is not compatible to dovecot by default
+1. This image contains a solr instance which is not compatible to all versions of dovecot by default; up to date versions should work out of the box
 2. This image **does not** support any authentication or encryption
 
 ### Installation of solr
