@@ -1,4 +1,4 @@
-FROM solr:latest
+FROM solr:7.1
 
 MAINTAINER Leonard Marschke <github@marschke.me>
 
