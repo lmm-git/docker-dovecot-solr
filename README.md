@@ -31,6 +31,20 @@ Afterwards you have to configure the solr usage in dovecot like described at htt
 
 Please note that the url schema has changed a bit; you probably should use this url: `http://localhost:8983/solr/dovecot/`
 
+After you started up a (fresh) Solr instance, you can re-index all your messages by using:
+
+```bash
+doveadm fts rescan -A
+doveadm index -A '*'
+```
+
+To just test the indexing, you can also use:
+
+```bash
+doveadm fts rescan -u username@yourdomain
+doveadm index -u username@yourdomain -q '*'
+```
+
 #### Dovecot 2.2.9
 With dovecot version 2.2.9 there is a problem with dovecot's header setting here: https://github.com/dovecot/core/blob/master/src/plugins/fts-solr/solr-connection.c#L490
 
