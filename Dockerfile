@@ -1,4 +1,4 @@
-FROM solr:latest
+FROM solr:7
 
 MAINTAINER Leonard Marschke <github@marschke.me>
 
@@ -9,6 +9,6 @@ USER root
 RUN chown -R solr:solr /opt/solr/server/solr/dovecot
 
 # higher heap size to handle large mailboxes
-RUN sed -i 's/#SOLR_HEAP="512m"/SOLR_HEAP="4096m"/g' /etc/default/solr.in.sh
+RUN sed -i 's/#SOLR_HEAP="512m"/SOLR_HEAP="4096m"/g' /opt/solr/bin/solr.in.sh
 
 USER solr
