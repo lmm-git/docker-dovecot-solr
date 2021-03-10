@@ -26,6 +26,13 @@ on your server running `dovecot`
 
 Afterwards you can access the solr admin panel at http://127.0.0.1:8983/solr
 
+To get persistent dovecot storage, you should mount the directory `/opt/solr/server/solr/dovecot` to a volume. Also, you can do a full rescan after each container (re)start
+
+```bash
+doveadm fts rescan -A
+doveadm index -A '*'
+```
+
 ### Hooking up dovecot
 Afterwards you have to configure the solr usage in dovecot like described at http://wiki2.dovecot.org/Plugins/FTS/Solr
 
